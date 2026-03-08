@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hema nursing</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Kafr-ElSheikh:wght@600;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary:#007BFF;
+  --secondary:#0f0f0f;
+  --accent:#00BFFF;
+  --glass:rgba(255,255,255,.05);
+} 
+
+*{box-sizing:border-box;margin:0;padding:0;}
+
+body{
+  font-family:'Kafr-ElSheikh',sans-serif;
+  background:var(--secondary);
+  color:#fff;
+  text-align:center;
+  overflow-x:hidden;
+}
+
+#bg-video{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:brightness(.3) contrast(1.2);
+  z-index:-3;
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,.6),#000);
+  z-index:-2;
+}
+
+canvas{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+}
+
+#content{
+  max-width:1000px;
+  margin:auto;
+  padding:100px 20px;
+}
+
+.profile-pic{
+  width:220px;
+  height:220px;
+  margin:auto;
+  border-radius:50%;
+  padding:10px;
+  background:var(--primary);
+  box-shadow:0 0 40px var(--primary),0 0 80px var(--accent);
+  transition:0.5s;
+}
+
+.profile-pic:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 80px var(--primary),0 0 150px var(--accent);
+}
+
+.profile-pic img{
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  object-fit:cover;
+  background:#111;
+}
+
+h1{
+  margin:30px 0 15px;
+  font-size:3.8em;
+  font-weight:900;
+  letter-spacing:4px;
+}
+
+h1 span{
+  color:var(--primary);
+  text-shadow:0 0 25px var(--primary),0 0 50px var(--accent);
+}
+
+.description{
+  font-size:1.2em;
+  color:#ccc;
+  line-height:2;
+  margin-bottom:40px;
+}
+
+.music-btn{
+  width:80px;
+  height:80px;
+  border-radius:50%;
+  border:2px solid var(--primary);
+  background:transparent;
+  color:var(--primary);
+  font-size:28px;
+  cursor:pointer;
+  margin:30px auto;
+  box-shadow:0 0 40px var(--primary);
+}
+
+.buttons{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:25px;
+  margin:50px 0;
+}
+
+.btn{
+  padding:18px;
+  border-radius:25px;
+  background:var(--glass);
+  color:#fff;
+  font-weight:800;
+  text-decoration:none;
+  box-shadow:0 0 30px rgba(139,49,199,.4);
+  transition:.4s;
+}
+
+.btn i{
+  margin-left:10px;
+  color:var(--primary);
+}
+
+.btn:hover{
+  background:var(--primary);
+  color:#000;
+  transform:translateY(-8px) scale(1.05);
+}
+
+.skills{
+  margin-top:60px;
+  padding:40px;
+  border-radius:35px;
+  background:var(--glass);
+}
+
+.skills h2{
+  margin-bottom:30px;
+  font-weight:900;
+  color:var(--primary);
+}
+
+.skill-container{
+  margin:20px 0;
+}
+
+.skill-bar{
+  height:20px;
+  background:rgba(255,255,255,.1);
+  border-radius:25px;
+  overflow:hidden;
+}
+
+.skill-bar span{
+  display:block;
+  height:100%;
+  width:0;
+  background:linear-gradient(90deg,var(--primary),var(--accent));
+  transition:2s;
+}
+
+.services{
+  margin-top:70px;
+  padding:40px;
+  border-radius:35px;
+  background:var(--glass);
+}
+
+.services h2{
+  margin-bottom:30px;
+  color:var(--primary);
+}
+
+.channel-btn{
+  position:fixed;
+  bottom:30px;
+  left:30px;
+  padding:18px 30px;
+  border-radius:50px;
+  background:var(--primary);
+  color:#000;
+  font-weight:800;
+  text-decoration:none;
+  box-shadow:0 0 40px var(--accent);
+}
+
+</style>
+</head>
+
+<body>
+
+<video id="bg-video" autoplay muted loop playsinline>
+<source src="https://files.catbox.moe/t69ai0.mp4">
+</video>
+
+<canvas id="particles"></canvas>
+
+<audio id="music" src="https://files.catbox.moe/a89ps8.mp3"></audio>
+
+<div id="content">
+
+<div class="profile-pic">
+<img src="main.jpg">
+</div>
+
+<h1>Hema <span>Elknany🩺</span></h1>
+
+<p class="description">
+الخدمات التمريضيه 🩺💉 <br>Nursing services 
+</p>
+
+<button class="music-btn" id="musicBtn">
+<i class="fas fa-play"></i>
+</button>
+
+<div class="buttons">
+<a class="btn" href="https://wa.me/message/POE3LXUHKZWDA1"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+<a class="btn" href="https://t.me/PA7SP"><i class="fab fa-telegram"></i> Telegram</a>
+</div>
+
+<div class="skills">
+<h2>My Skills</h2>
+
+<div class="skill-container">
+<span>JavaScript</span>
+<div class="skill-bar"><span data-width="85%"></span></div>
+</div>
+
+<div class="skill-container">
+<span>Python</span>
+<div class="skill-bar"><span data-width="45%"></span></div>
+</div>
+
+<div class="skill-container">
+<span>HTML & CSS</span>
+<div class="skill-bar"><span data-width="65%"></span></div>
+</div>
+
+</div>
+
+<div class="services">
+<h2>الخدمات التمريضية</h2>
+
+<div class="buttons">
+
+<div class="btn"><i class="fas fa-syringe"></i> إعطاء الحقن</div>
+
+<div class="btn"><i class="fas fa-heartbeat"></i> قياس الضغط والسكر</div>
+
+<div class="btn"><i class="fas fa-procedures"></i> رعاية المرضى بالمنزل</div>
+
+<div class="btn"><i class="fas fa-band-aid"></i> تغيير الجروح والضمادات</div>
+
+<div class="btn"><i class="fas fa-stethoscope"></i> متابعة الحالات المرضية</div>
+
+<div class="btn"><i class="fas fa-hospital-user"></i> تركيب المحاليل</div>
+
+</div>
+</div>
+
+</div>
+
+<a href="https://whatsapp.com/channel/0029VbBLHqJ2f3ETLYNNYg2M" class="channel-btn">
+<i class="fab fa-whatsapp"></i> My Channel
+</a>
+
+<script>
+
+const music=document.getElementById("music");
+const btn=document.getElementById("musicBtn");
+const icon=btn.querySelector("i");
+
+btn.onclick=()=>{
+if(music.paused){
+music.play();
+icon.className="fas fa-pause";
+}else{
+music.pause();
+icon.className="fas fa-play";
+}
+};
+
+const canvas=document.getElementById("particles");
+const ctx=canvas.getContext("2d");
+
+let particles=[];
+
+function resize(){
+canvas.width=innerWidth;
+canvas.height=innerHeight;
+}
+
+resize();
+addEventListener("resize",resize);
+
+for(let i=0;i<180;i++){
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*2,
+s:Math.random()*0.8
+});
+}
+
+(function animate(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+particles.forEach(p=>{
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+ctx.fillStyle="white";
+ctx.fill();
+
+p.y+=p.s;
+
+if(p.y>canvas.height){
+p.y=0;
+p.x=Math.random()*canvas.width;
+}
+
+});
+
+requestAnimationFrame(animate);
+
+})();
+
+document.querySelectorAll(".skill-bar span").forEach(e=>{
+setTimeout(()=>{
+e.style.width=e.dataset.width
+},500)
+});
+
+</script>
+
+</body>
+  </html>
