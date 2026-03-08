@@ -72,47 +72,50 @@ h1 span{
   margin-bottom:20px;
 }
 
-/* ECG */
-
+/* ECG + قلب بينبض */
 .ecg-container{
   width:100%;
   height:80px;
   margin:30px 0;
   overflow:hidden;
   position:relative;
-}
-
-.ecg-line{
-  position:absolute;
-  width:200%;
-  height:100%;
-  background:
-  repeating-linear-gradient(
-  to right,
-  transparent 0px,
-  transparent 20px,
-  rgba(0,255,0,0.3) 21px
-  );
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:15px;
 }
 
 .ecg-line svg{
-  position:absolute;
-  width:200%;
+  width:80%;
   height:80px;
-  animation:ecgMove 4s linear infinite;
-}
-
-.ecg-line polyline{
-  fill:none;
   stroke:#00ff6a;
   stroke-width:3;
+  fill:none;
+  stroke-dasharray:1000;
+  stroke-dashoffset:1000;
+  animation:ecgMove 2s linear infinite;
 }
 
 @keyframes ecgMove{
-  from{transform:translateX(0)}
-  to{transform:translateX(-50%)}
+  to{ stroke-dashoffset:0; }
 }
 
+.heart {
+  width:40px;
+  height:40px;
+  background: red;
+  clip-path: polygon(50% 0%, 61% 14%, 75% 14%, 85% 25%, 85% 38%, 50% 100%, 15% 38%, 15% 25%, 25% 14%, 39% 14%);
+  animation: heartbeat 1s infinite;
+}
+
+@keyframes heartbeat{
+  0%,100%{ transform: scale(1); }
+  25%{ transform: scale(1.2); }
+  50%{ transform: scale(1); }
+  75%{ transform: scale(1.2); }
+}
+
+/* أزرار */
 .buttons{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
@@ -199,12 +202,10 @@ h1 span{
 <h1>Hema <span>Elknany</span></h1>
 
 <p class="description">
-خدمات تمريض منزلي في كفر الشيخ و المنشأة الكبري
+خدمات تمريض المنزلي في كفر الشيخ و المنشأة الكبري 🩺💉
 </p>
 
 <div class="ecg-container">
-<div class="ecg-line">
-
 <svg viewBox="0 0 1000 80">
 <polyline points="
 0,40 40,40 60,10 80,70 100,40
@@ -217,8 +218,7 @@ h1 span{
 860,40 880,40 900,10 920,70 940,40
 "/>
 </svg>
-
-</div>
+<div class="heart"></div>
 </div>
 
 <div class="buttons">
@@ -227,17 +227,18 @@ h1 span{
 </div>
 
 <div class="services">
-<h2>الخدمات التمريضية🩺</h2>
+<h2>الخدمات التمريضيه 🩺</h2>
 
 <div class="buttons">
-
 <div class="btn"><i class="fas fa-syringe"></i> إعطاء الحقن</div>
 <div class="btn"><i class="fas fa-heartbeat"></i> قياس الضغط والسكر</div>
 <div class="btn"><i class="fas fa-procedures"></i> رعاية المرضى بالمنزل</div>
 <div class="btn"><i class="fas fa-band-aid"></i> تغيير الجروح والضمادات</div>
 <div class="btn"><i class="fas fa-stethoscope"></i> متابعة الحالات المرضية</div>
 <div class="btn"><i class="fas fa-hospital-user"></i> تركيب المحاليل</div>
-
+<div class="btn"><i class="fas fa-vial"></i> أخذ عينات دم</div>
+<div class="btn"><i class="fas fa-blind"></i> العناية بكبار السن</div>
+<div class="btn"><i class="fas fa-child"></i> رعاية أطفال</div>
 </div>
 
 <a class="order-btn" href="https://wa.me/message/POE3LXUHKZWDA1">
@@ -266,4 +267,4 @@ src="https://maps.google.com/maps?q=Kafr%20El%20Sheikh&t=&z=13&ie=UTF8&iwloc=&ou
 </div>
 
 </body>
-</html>
+  </html>
